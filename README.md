@@ -133,9 +133,7 @@ sceneView.session.getCurrentWorldMap { worldMap, error in
 When a device receives data sent by another participant in the multipeer session, the [`session(_:didReceive:fromPeer:)`][40] delegate method provides that data. To make use of it, the app uses [`NSKeyedUnarchiver`][41] to deserialize an [`ARWorldMap`][0] object, then creates and runs a new [`ARWorldTrackingConfiguration`][11] using that map as the [`initialWorldMap`][42]:
 
 ``` swift
-if let unarchived = try? NSKeyedUnarchiver.unarchivedObject(of: ARWorldMap.classForKeyedUnarchiver(), from: data),
-    let worldMap = unarchived as? ARWorldMap {
-    
+if let worldMap = try NSKeyedUnarchiver.unarchivedObject(ofClass: ARWorldMap.self, from: data) {
     // Run the session with the received world map.
     let configuration = ARWorldTrackingConfiguration()
     configuration.planeDetection = .horizontal
@@ -180,9 +178,8 @@ self.multipeerSession.sendToAllPeers(data)
 When other peers receive data from the multipeer session, they test for whether that data contains an archived [`ARAnchor`][15]; if so, they decode it and add it to their session:
 
 ``` swift
-if let unarchived = try? NSKeyedUnarchiver.unarchivedObject(of: ARAnchor.classForKeyedUnarchiver(), from: data),
-    let anchor = unarchived as? ARAnchor {
-    
+if let anchor = try NSKeyedUnarchiver.unarchivedObject(ofClass: ARAnchor.self, from: data) {
+    // Add anchor to the session, ARSCNView delegate adds visible content.
     sceneView.session.add(anchor: anchor)
 }
 ```

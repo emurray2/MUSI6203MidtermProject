@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7dh-A0-qGE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7dh-A0-qGE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,7 +73,7 @@
                             </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOo-FY-E3u" userLabel="Restart Experience Button Icon">
                                 <rect key="frame" x="323" y="20" width="52" height="60"/>
-                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="24" maxY="12"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="25" maxX="24" maxY="12"/>
                                 <state key="normal" image="restart"/>
                                 <state key="selected" image="restartPressed"/>
                                 <state key="highlighted" image="restartPressed"/>
@@ -87,7 +87,6 @@
                             <constraint firstAttribute="bottom" secondItem="BrB-h1-WRS" secondAttribute="bottom" id="8rY-15-6Ru"/>
                             <constraint firstItem="aD6-EU-VHg" firstAttribute="centerX" secondItem="gad-7G-M17" secondAttribute="centerX" id="8v8-sx-R5a"/>
                             <constraint firstItem="cOo-FY-E3u" firstAttribute="trailing" secondItem="71x-2l-AWw" secondAttribute="trailing" id="98g-WD-pt7"/>
-                            <constraint firstItem="cOo-FY-E3u" firstAttribute="firstBaseline" secondItem="hCE-IA-wLv" secondAttribute="firstBaseline" constant="4" id="AIE-1n-0hq"/>
                             <constraint firstItem="37h-bD-Iyn" firstAttribute="top" secondItem="71x-2l-AWw" secondAttribute="top" constant="20" id="BFW-Is-OAQ"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="71x-2l-AWw" secondAttribute="leading" id="QIa-Ri-qJo"/>
                             <constraint firstItem="gad-7G-M17" firstAttribute="top" secondItem="aD6-EU-VHg" secondAttribute="bottom" constant="8" id="TSK-DU-DFL"/>
