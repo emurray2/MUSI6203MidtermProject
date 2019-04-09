@@ -26,7 +26,7 @@ Requires Xcode 10.0, iOS 12.0 and two or more iOS devices with A9 or later proce
 
 This app extends the basic workflow for building an ARKit app. (For details, see [Building Your First AR Experience][10].) It defines an [`ARWorldTrackingConfiguration`][11] with plane detection enabled, then runs that configuration in the [`ARSession`][12] attached to the [`ARSCNView`][13] that displays the AR experience.
 
-When [`UITapGestureRecognizer`][14] detects a tap on the screen, the [`handleSceneTap`](x-source-tag://PlaceCharacter) method uses ARKit hit-testing to find a 3D point on a real-world surface, then places an [`ARAnchor`][15] marking that position. When ARKit calls the delegate method [`renderer(_:didAdd:for:)`][16], the app loads a 3D model for [`ARSCNView`][17] to display at the anchor's position.
+When [`UITapGestureRecognizer`][14] detects a tap on the screen, the [`handleSceneTap`](x-source-tag://PlaceCharacter) method uses ARKit hit-testing to find a 3D point on a real-world surface, then places an [`ARAnchor`][15] marking that position. When ARKit calls the delegate method [`renderer(_:didAdd:for:)`][16], the app loads a 3D model for [`ARSCNView`][13] to display at the anchor's position.
 
 [10]:https://developer.apple.com/documentation/arkit/building_your_first_ar_experience
 [11]:https://developer.apple.com/documentation/arkit/arworldtrackingconfiguration
@@ -34,8 +34,7 @@ When [`UITapGestureRecognizer`][14] detects a tap on the screen, the [`handleSce
 [13]:https://developer.apple.com/documentation/arkit/arscnview
 [14]:https://developer.apple.com/documentation/uikit/uitapgesturerecognizer
 [15]:https://developer.apple.com/documentation/arkit/aranchor
-[16]:https://developer.apple.com/documentation/arkit/arscnview
-[17]:https://developer.apple.com/documentation/arkit/arscnview
+[16]:https://developer.apple.com/documentation/arkit/arscnviewdelegate/2865794-renderer
 
 ## Connect to Peer Devices
 
