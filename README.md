@@ -28,7 +28,7 @@ This app extends the basic workflow for building an ARKit app. (For details, see
 
 When [`UITapGestureRecognizer`][14] detects a tap on the screen, the [`handleSceneTap`](x-source-tag://PlaceCharacter) method uses ARKit hit-testing to find a 3D point on a real-world surface, then places an [`ARAnchor`][15] marking that position. When ARKit calls the delegate method [`renderer(_:didAdd:for:)`][16], the app loads a 3D model for [`ARSCNView`][13] to display at the anchor's position.
 
-[10]:https://developer.apple.com/documentation/arkit/building_your_first_ar_experience
+[10]:https://developer.apple.com/documentation/arkit/tracking_and_visualizing_planes
 [11]:https://developer.apple.com/documentation/arkit/arworldtrackingconfiguration
 [12]:https://developer.apple.com/documentation/arkit/arsession
 [13]:https://developer.apple.com/documentation/arkit/arscnview
