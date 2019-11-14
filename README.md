@@ -1,6 +1,6 @@
 # Creating a Multiuser AR Experience
 
-Transmit ARKit world-mapping data between nearby devices with the MultipeerConnectivity framework to create a shared basis for AR experiences.
+Enable nearby devices to share an AR experience by using a host-guest multiuser strategy. 
 
 ## Overview
 
