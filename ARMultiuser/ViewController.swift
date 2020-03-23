@@ -89,6 +89,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             sendMapButton.isEnabled = !multipeerSession.connectedPeers.isEmpty
         case .mapped:
             sendMapButton.isEnabled = !multipeerSession.connectedPeers.isEmpty
+        @unknown default:
+            sendMapButton.isEnabled = false
         }
         mappingStatusLabel.text = frame.worldMappingStatus.description
         updateSessionInfoLabel(for: frame, trackingState: frame.camera.trackingState)
