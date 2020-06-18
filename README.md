@@ -28,7 +28,7 @@ This app extends the basic workflow for building an ARKit app. (For details, see
 
 When [`UITapGestureRecognizer`][14] detects a tap on the screen, the [`handleSceneTap`](x-source-tag://PlaceCharacter) method uses ARKit hit-testing to find a 3D point on a real-world surface, then places an [`ARAnchor`][15] marking that position. When ARKit calls the delegate method [`renderer(_:didAdd:for:)`][16], the app loads a 3D model for [`ARSCNView`][13] to display at the anchor's position.
 
-[10]:https://developer.apple.com/documentation/arkit/tracking_and_visualizing_planes
+[10]:https://developer.apple.com/documentation/arkit/world_tracking/tracking_and_visualizing_planes
 [11]:https://developer.apple.com/documentation/arkit/arworldtrackingconfiguration
 [12]:https://developer.apple.com/documentation/arkit/arsession
 [13]:https://developer.apple.com/documentation/arkit/arscnview
@@ -76,10 +76,10 @@ func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFro
 
 - Important: This app automatically joins the first nearby session it finds. Depending on the kind of shared AR experience you want to create, you may want to more precisely control broadcasting, invitation, and acceptance behavior. See the [MultipeerConnectivity][20] documentation for details.
 
-In a multipeer session, all participants are by definition equal peers; there is no explicit separation of devices into host (or server or master) and guest (or client or slave) roles. However, you may wish to define such roles for your own AR experience. For example, a multiplayer game design might require a server role to arbitrate gameplay. If you need to separate peers by role, you can choose a way to do so that fits the design of your app. For example:
+In a multipeer session, all participants are by definition equal peers; there is no explicit separation of devices into host and guest roles. However, you may wish to define such roles for your own AR experience. For example, a multiplayer game design might require a host role to arbitrate gameplay. If you need to separate peers by role, you can choose a way to do so that fits the design of your app. For example:
 
 - Have the user choose whether to act as a host or guest before starting a session. The host uses [`MCNearbyServiceAdvertiser`][21] to broadcast availability, and guests use [`MCNearbyServiceBrowser`][22] to find a host to join.
-- Join a session as peers, then negotiate between peers to nominate a master. (This approach can be helpful for designs that need a master role but also allow peers to join or leave at any time.)
+- Join a session as peers, then negotiate between peers to nominate a host. (This approach can be helpful for designs that need a host role but also allow peers to join or leave at any time.)
 
 
 [20]:https://developer.apple.com/documentation/multipeerconnectivity
