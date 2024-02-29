@@ -22,7 +22,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     // MARK: - View Life Cycle
     
     var multipeerSession: MultipeerSession!
-    
+    var audioSpatializer = AudioSpatializer()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -94,6 +95,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         }
         mappingStatusLabel.text = frame.worldMappingStatus.description
         updateSessionInfoLabel(for: frame, trackingState: frame.camera.trackingState)
+        audioSpatializer.updateListenerTransform(updatedTransform: frame.camera.transform)
     }
     
     // MARK: - ARSessionObserver

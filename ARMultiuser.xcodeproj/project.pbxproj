@@ -3,10 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		075A93772B8FEBE800C906CC /* AudioSpatializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A93762B8FEBE800C906CC /* AudioSpatializer.swift */; };
+		075A93792B8FECCE00C906CC /* Float4x4+RotationMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A93782B8FECCE00C906CC /* Float4x4+RotationMatrix.swift */; };
+		075A937C2B8FEE2100C906CC /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 075A937B2B8FEE2100C906CC /* AudioKit */; };
+		075A937F2B8FEE9A00C906CC /* AudioKitEX in Frameworks */ = {isa = PBXBuildFile; productRef = 075A937E2B8FEE9A00C906CC /* AudioKitEX */; };
+		075A93832B8FF0F200C906CC /* NHU05070109.wav in Resources */ = {isa = PBXBuildFile; fileRef = 075A93822B8FF0F100C906CC /* NHU05070109.wav */; };
+		075A93862B8FF1BD00C906CC /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 075A93852B8FF1BD00C906CC /* SoundpipeAudioKit */; };
 		111DC86920ACAB690037F7B1 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111DC86820ACAB690037F7B1 /* RoundedButton.swift */; };
 		112FE5671F4F95A200BF85EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 112FE5661F4F95A200BF85EA /* Assets.xcassets */; };
 		11C983EC20953B7900394C67 /* MultipeerSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C983EB20953B7900394C67 /* MultipeerSession.swift */; };
@@ -19,11 +25,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		075A93762B8FEBE800C906CC /* AudioSpatializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSpatializer.swift; sourceTree = "<group>"; };
+		075A93782B8FECCE00C906CC /* Float4x4+RotationMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float4x4+RotationMatrix.swift"; sourceTree = "<group>"; };
+		075A93822B8FF0F100C906CC /* NHU05070109.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = NHU05070109.wav; sourceTree = "<group>"; };
 		111DC86820ACAB690037F7B1 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		112FE5661F4F95A200BF85EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11C983EB20953B7900394C67 /* MultipeerSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerSession.swift; sourceTree = "<group>"; };
 		11E97209209A355F006E3D26 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		3E1BD91AFA02CCC40A2B4F85 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE.txt; sourceTree = "<group>"; };
+		3E1BD91AFA02CCC40A2B4F85 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		842316DC1F2030C300D189D1 /* ARMultiuser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARMultiuser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842316DF1F2030C300D189D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		842316E31F2030C300D189D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -32,7 +41,7 @@
 		842316ED1F2030C300D189D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84ABEA091F3D15E70052D547 /* Assets.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Assets.scnassets; sourceTree = "<group>"; };
 		C85709121F34FC2200BB957F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		FBAF5356FF2B690CFEBC4145 /* SampleCode.xcconfig */ = {isa = PBXFileReference; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
+		FBAF5356FF2B690CFEBC4145 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +49,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				075A937C2B8FEE2100C906CC /* AudioKit in Frameworks */,
+				075A937F2B8FEE9A00C906CC /* AudioKitEX in Frameworks */,
+				075A93862B8FF1BD00C906CC /* SoundpipeAudioKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,9 +88,12 @@
 		842316DE1F2030C300D189D1 /* ARMultiuser */ = {
 			isa = PBXGroup;
 			children = (
+				075A93822B8FF0F100C906CC /* NHU05070109.wav */,
+				075A93782B8FECCE00C906CC /* Float4x4+RotationMatrix.swift */,
 				842316DF1F2030C300D189D1 /* AppDelegate.swift */,
 				842316E31F2030C300D189D1 /* ViewController.swift */,
 				11C983EB20953B7900394C67 /* MultipeerSession.swift */,
+				075A93762B8FEBE800C906CC /* AudioSpatializer.swift */,
 				111DC86820ACAB690037F7B1 /* RoundedButton.swift */,
 				11E97209209A355F006E3D26 /* Utilities.swift */,
 				842316E51F2030C300D189D1 /* Main.storyboard */,
@@ -95,7 +110,6 @@
 			children = (
 				3E1BD91AFA02CCC40A2B4F85 /* LICENSE.txt */,
 			);
-			name = LICENSE;
 			path = LICENSE;
 			sourceTree = "<group>";
 		};
@@ -115,6 +129,11 @@
 			dependencies = (
 			);
 			name = ARMultiuser;
+			packageProductDependencies = (
+				075A937B2B8FEE2100C906CC /* AudioKit */,
+				075A937E2B8FEE9A00C906CC /* AudioKitEX */,
+				075A93852B8FF1BD00C906CC /* SoundpipeAudioKit */,
+			);
 			productName = ARMultiuser;
 			productReference = 842316DC1F2030C300D189D1 /* ARMultiuser.app */;
 			productType = "com.apple.product-type.application";
@@ -144,6 +163,11 @@
 				Base,
 			);
 			mainGroup = 842316D31F2030C300D189D1;
+			packageReferences = (
+				075A937A2B8FEE2100C906CC /* XCRemoteSwiftPackageReference "AudioKit" */,
+				075A937D2B8FEE9A00C906CC /* XCRemoteSwiftPackageReference "AudioKitEX" */,
+				075A93842B8FF1BD00C906CC /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */,
+			);
 			productRefGroup = 842316DD1F2030C300D189D1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -158,6 +182,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				075A93832B8FF0F200C906CC /* NHU05070109.wav in Resources */,
 				84ABEA0A1F3D15E70052D547 /* Assets.scnassets in Resources */,
 				842316EC1F2030C300D189D1 /* LaunchScreen.storyboard in Resources */,
 				112FE5671F4F95A200BF85EA /* Assets.xcassets in Resources */,
@@ -173,9 +198,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				11E9720A209A355F006E3D26 /* Utilities.swift in Sources */,
+				075A93772B8FEBE800C906CC /* AudioSpatializer.swift in Sources */,
 				111DC86920ACAB690037F7B1 /* RoundedButton.swift in Sources */,
 				11C983EC20953B7900394C67 /* MultipeerSession.swift in Sources */,
 				842316E41F2030C300D189D1 /* ViewController.swift in Sources */,
+				075A93792B8FECCE00C906CC /* Float4x4+RotationMatrix.swift in Sources */,
 				842316E01F2030C300D189D1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,7 +280,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -307,10 +334,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -322,8 +350,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ARMultiuser/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.ARMultiuser${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -339,8 +370,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ARMultiuser/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.ARMultiuser${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -371,6 +405,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		075A937A2B8FEE2100C906CC /* XCRemoteSwiftPackageReference "AudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		075A937D2B8FEE9A00C906CC /* XCRemoteSwiftPackageReference "AudioKitEX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKitEX";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		075A93842B8FF1BD00C906CC /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/SoundpipeAudioKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		075A937B2B8FEE2100C906CC /* AudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 075A937A2B8FEE2100C906CC /* XCRemoteSwiftPackageReference "AudioKit" */;
+			productName = AudioKit;
+		};
+		075A937E2B8FEE9A00C906CC /* AudioKitEX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 075A937D2B8FEE9A00C906CC /* XCRemoteSwiftPackageReference "AudioKitEX" */;
+			productName = AudioKitEX;
+		};
+		075A93852B8FF1BD00C906CC /* SoundpipeAudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 075A93842B8FF1BD00C906CC /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */;
+			productName = SoundpipeAudioKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 842316D41F2030C300D189D1 /* Project object */;
 }
