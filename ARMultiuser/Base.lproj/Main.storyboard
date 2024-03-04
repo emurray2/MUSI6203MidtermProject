@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7dh-A0-qGE">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7dh-A0-qGE">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +30,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gad-7G-M17" customClass="RoundedButton" customModule="ARMultiuser" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gad-7G-M17" customClass="RoundedButton" customModule="ARMultiuser" customModuleProvider="target">
                                 <rect key="frame" x="117.5" y="593" width="140" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="13" minY="8" maxX="13" maxY="8"/>
@@ -41,13 +40,13 @@
                                 </connections>
                             </button>
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37h-bD-Iyn">
-                                <rect key="frame" x="16" y="40" width="191" height="38"/>
+                                <rect key="frame" x="16" y="40" width="190" height="38"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pkc-hu-yuO">
-                                    <rect key="frame" x="0.0" y="0.0" width="191" height="38"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="190" height="38"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initializing AR session." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCE-IA-wLv">
-                                            <rect key="frame" x="8" y="8" width="169" height="22"/>
+                                            <rect key="frame" x="8" y="8" width="168" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="7j0-wl-8x9"/>
                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="awR-PG-icx"/>
@@ -71,33 +70,21 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOo-FY-E3u" userLabel="Restart Experience Button Icon">
-                                <rect key="frame" x="323" y="20" width="52" height="60"/>
-                                <inset key="contentEdgeInsets" minX="8" minY="25" maxX="24" maxY="12"/>
-                                <state key="normal" image="restart"/>
-                                <state key="selected" image="restartPressed"/>
-                                <state key="highlighted" image="restartPressed"/>
-                                <connections>
-                                    <action selector="resetTracking:" destination="7dh-A0-qGE" eventType="touchUpInside" id="OJ4-o7-irp"/>
-                                </connections>
-                            </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="71x-2l-AWw"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="BrB-h1-WRS" secondAttribute="bottom" id="8rY-15-6Ru"/>
                             <constraint firstItem="aD6-EU-VHg" firstAttribute="centerX" secondItem="gad-7G-M17" secondAttribute="centerX" id="8v8-sx-R5a"/>
-                            <constraint firstItem="cOo-FY-E3u" firstAttribute="trailing" secondItem="71x-2l-AWw" secondAttribute="trailing" id="98g-WD-pt7"/>
                             <constraint firstItem="37h-bD-Iyn" firstAttribute="top" secondItem="71x-2l-AWw" secondAttribute="top" constant="20" id="BFW-Is-OAQ"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="71x-2l-AWw" secondAttribute="leading" id="QIa-Ri-qJo"/>
                             <constraint firstItem="gad-7G-M17" firstAttribute="top" secondItem="aD6-EU-VHg" secondAttribute="bottom" constant="8" id="TSK-DU-DFL"/>
                             <constraint firstItem="37h-bD-Iyn" firstAttribute="leading" secondItem="loo-cG-myf" secondAttribute="leadingMargin" id="YWP-ZC-63w"/>
                             <constraint firstItem="71x-2l-AWw" firstAttribute="trailing" secondItem="BrB-h1-WRS" secondAttribute="trailing" id="a3B-9u-pb1"/>
-                            <constraint firstItem="71x-2l-AWw" firstAttribute="top" secondItem="cOo-FY-E3u" secondAttribute="top" id="kqp-b7-tN4"/>
                             <constraint firstItem="gad-7G-M17" firstAttribute="centerX" secondItem="BrB-h1-WRS" secondAttribute="centerX" id="pJj-xV-neK"/>
                             <constraint firstItem="71x-2l-AWw" firstAttribute="bottom" secondItem="gad-7G-M17" secondAttribute="bottom" constant="40" id="rjy-cN-gsQ"/>
                             <constraint firstAttribute="top" secondItem="BrB-h1-WRS" secondAttribute="top" id="ulI-xa-35w"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="71x-2l-AWw"/>
                     </view>
                     <connections>
                         <outlet property="mappingStatusLabel" destination="aD6-EU-VHg" id="XNR-tR-am9"/>
@@ -118,8 +105,9 @@
             <point key="canvasLocation" x="1029.5999999999999" y="-222.63868065967017"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="restart" width="20" height="23"/>
-        <image name="restartPressed" width="20" height="23"/>
-    </resources>
+    <designables>
+        <designable name="gad-7G-M17">
+            <size key="intrinsicContentSize" width="140" height="34"/>
+        </designable>
+    </designables>
 </document>

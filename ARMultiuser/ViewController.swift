@@ -23,11 +23,14 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     
     var multipeerSession: MultipeerSession!
     var audioSpatializer = AudioSpatializer()
+    let soundIdentities = ["pine", "bird", "bird2", "frog", "monkey", "rain", "wind"]
+    var soundIdentity = "pine"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         multipeerSession = MultipeerSession(receivedDataHandler: receivedData)
+        soundIdentity = soundIdentities.randomElement()!
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,7 +60,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         // Prevent the screen from being dimmed after a while as users will likely
         // have long periods of interaction without touching the screen or buttons.
         UIApplication.shared.isIdleTimerDisabled = true
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -70,8 +72,20 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     // MARK: - ARSCNViewDelegate
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        if let name = anchor.name, name.hasPrefix("panda") {
-            node.addChildNode(loadRedPandaModel())
+        if let name = anchor.name, name.hasPrefix("pine") {
+            node.addChildNode(loadPineModel())
+        } else if let name = anchor.name, name.hasPrefix("bird") {
+            node.addChildNode(loadBirdModel())
+        } else if let name = anchor.name, name.hasPrefix("bird2") {
+            node.addChildNode(loadBird2Model())
+        } else if let name = anchor.name, name.hasPrefix("frog") {
+            node.addChildNode(loadFrogModel())
+        } else if let name = anchor.name, name.hasPrefix("monkey") {
+            node.addChildNode(loadMonkeyModel())
+        } else if let name = anchor.name, name.hasPrefix("rain") {
+            node.addChildNode(loadRainModel())
+        } else if let name = anchor.name, name.hasPrefix("wind") {
+            node.addChildNode(loadWindModel())
         }
     }
     
@@ -129,7 +143,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             let alertController = UIAlertController(title: "The AR session failed.", message: errorMessage, preferredStyle: .alert)
             let restartAction = UIAlertAction(title: "Restart Session", style: .default) { _ in
                 alertController.dismiss(animated: true, completion: nil)
-                self.resetTracking(nil)
             }
             alertController.addAction(restartAction)
             self.present(alertController, animated: true, completion: nil)
@@ -146,17 +159,18 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             .hitTest(sender.location(in: sceneView), types: [.existingPlaneUsingGeometry, .estimatedHorizontalPlane])
             .first
             else { return }
-        
+
         // Place an anchor for a virtual character. The model appears in renderer(_:didAdd:for:).
-        let anchor = ARAnchor(name: "panda", transform: hitTestResult.worldTransform)
+        let anchor = ARAnchor(name: soundIdentity, transform: hitTestResult.worldTransform)
         sceneView.session.add(anchor: anchor)
-        
+        audioSpatializer.addSource(withTransform: hitTestResult.worldTransform, identifier: soundIdentity)
+
         // Send the anchor info to peers, so they can place the same content.
         guard let data = try? NSKeyedArchiver.archivedData(withRootObject: anchor, requiringSecureCoding: true)
             else { fatalError("can't encode anchor") }
         self.multipeerSession.sendToAllPeers(data)
     }
-    
+
     /// - Tag: GetWorldMap
     @IBAction func shareSession(_ button: UIButton) {
         sceneView.session.getCurrentWorldMap { worldMap, error in
@@ -180,7 +194,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
                 configuration.planeDetection = .horizontal
                 configuration.initialWorldMap = worldMap
                 sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-                
+
                 // Remember who provided the map for showing UI feedback.
                 mapProvider = peer
             }
@@ -188,6 +202,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             if let anchor = try NSKeyedUnarchiver.unarchivedObject(ofClass: ARAnchor.self, from: data) {
                 // Add anchor to the session, ARSCNView delegate adds visible content.
                 sceneView.session.add(anchor: anchor)
+                audioSpatializer.addSource(withTransform: anchor.transform, identifier: anchor.name!)
             }
             else {
                 print("unknown data recieved from \(peer)")
@@ -241,19 +256,55 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         sessionInfoLabel.text = message
         sessionInfoView.isHidden = message.isEmpty
     }
-    
-    @IBAction func resetTracking(_ sender: UIButton?) {
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = .horizontal
-        sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-    }
-    
+
     // MARK: - AR session management
-    private func loadRedPandaModel() -> SCNNode {
-        let sceneURL = Bundle.main.url(forResource: "max", withExtension: "scn", subdirectory: "Assets.scnassets")!
+    private func loadPineModel() -> SCNNode {
+        let sceneURL = Bundle.main.url(forResource: "pine", withExtension: "scn", subdirectory: "Assets.scnassets")!
         let referenceNode = SCNReferenceNode(url: sceneURL)!
         referenceNode.load()
         
+        return referenceNode
+    }
+    private func loadBirdModel() -> SCNNode {
+        let sceneURL = Bundle.main.url(forResource: "bird", withExtension: "scn", subdirectory: "Assets.scnassets")!
+        let referenceNode = SCNReferenceNode(url: sceneURL)!
+        referenceNode.load()
+
+        return referenceNode
+    }
+    private func loadBird2Model() -> SCNNode {
+        let sceneURL = Bundle.main.url(forResource: "bird2", withExtension: "scn", subdirectory: "Assets.scnassets")!
+        let referenceNode = SCNReferenceNode(url: sceneURL)!
+        referenceNode.load()
+
+        return referenceNode
+    }
+    private func loadFrogModel() -> SCNNode {
+        let sceneURL = Bundle.main.url(forResource: "frog", withExtension: "scn", subdirectory: "Assets.scnassets")!
+        let referenceNode = SCNReferenceNode(url: sceneURL)!
+        referenceNode.load()
+
+        return referenceNode
+    }
+    private func loadMonkeyModel() -> SCNNode {
+        let sceneURL = Bundle.main.url(forResource: "monkey", withExtension: "scn", subdirectory: "Assets.scnassets")!
+        let referenceNode = SCNReferenceNode(url: sceneURL)!
+        referenceNode.load()
+
+        return referenceNode
+    }
+    private func loadRainModel() -> SCNNode {
+        let sceneURL = Bundle.main.url(forResource: "rain", withExtension: "scn", subdirectory: "Assets.scnassets")!
+        let referenceNode = SCNReferenceNode(url: sceneURL)!
+        referenceNode.load()
+
+        return referenceNode
+    }
+    private func loadWindModel() -> SCNNode {
+        let sceneURL = Bundle.main.url(forResource: "wind", withExtension: "scn", subdirectory: "Assets.scnassets")!
+        let referenceNode = SCNReferenceNode(url: sceneURL)!
+        referenceNode.load()
+
         return referenceNode
     }
 }

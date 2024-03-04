@@ -35,41 +35,19 @@ THE SOFTWARE.
 
 import PHASE
 import SwiftUI
-import PHASE
 import CoreMotion
-import AudioKit
-import AudioKitEX
-import SoundpipeAudioKit
-// Tap class which schedules buffers to be played in PHASE
-class PhaseTap: BaseTap {
-    var pushNode: PHASEPushStreamNode?
-    override func doHandleTapBlock(buffer: AVAudioPCMBuffer, at _: AVAudioTime) {
-        if let pushNode = pushNode {
-            pushNode.scheduleBuffer(buffer: buffer)
-        }
-    }
-}
 // Spatializes audio with the AirPods Pro
-class AudioSpatializer: ObservableObject {
+class AudioSpatializer {
     // The audio engine for PHASE
     let phaseEngine = PHASEEngine(updateMode: .automatic)
-    // The audio engine for AudioKit
-    let akEngine = AudioEngine()
-    // Audio Player from AudioKit wraps AVAudioPlayerNode
-    let player = AudioPlayer(url: Bundle.main.url(forResource: "NHU05070109", withExtension: "wav")!)
-    // Get motion from device motion sensor
-    private let motionManager = CMMotionManager()
     // Reference frame (this is what you would use for calibration, but here we simply use the value measured at the start of motion or its identity)
     private var referenceFrame = matrix_identity_float4x4
-    // Tap class to send audio to PHASE
-    private let myTap: PhaseTap
     // The listener in the scene
     var listener: PHASEListener!
+    // The sound source in the scene
+    var source: PHASESource!
+    var sources: [PHASESource] = []
     init() {
-        // Delay node from AudioKit for some cool effects
-        let akNode = ZitaReverb(player!)
-        // Silence the AudioKit Engine's output since we're using PHASE
-        akEngine.output = Fader(akNode, gain: 0.0)
         // Create a Listener.
         listener = PHASEListener(engine: phaseEngine)
         // Set the Listener's transform to the origin with no rotation.
@@ -78,54 +56,142 @@ class AudioSpatializer: ObservableObject {
         // This actives the Listener within the simulation.
         try! phaseEngine.rootObject.addChild(listener)
         // Create an Icosahedron Mesh.
-        let mesh = MDLMesh.newIcosahedron(withRadius: 0.0142, inwardNormals: false, allocator:nil)
+        let mesh = MDLMesh.newIcosahedron(withRadius: 1.0, inwardNormals: false, allocator:nil)
         // Create a Shape from the Icosahedron Mesh.
         let shape = PHASEShape(engine: phaseEngine, mesh: mesh)
         // Create a Volumetric Source from the Shape.
-        let source = PHASESource(engine: phaseEngine, shapes: [shape])
-        // Translate the Source 2 meters in front of the Listener and rotated back toward the Listener.
-        var sourceTransform: simd_float4x4 = simd_float4x4()
-        sourceTransform.columns.0 = simd_make_float4(-1.0, 0.0, 0.0, 0.0)
-        sourceTransform.columns.1 = simd_make_float4(0.0, 1.0, 0.0, 0.0)
-        sourceTransform.columns.2 = simd_make_float4(0.0, 0.0, -1.0, 0.0)
-        sourceTransform.columns.3 = simd_make_float4(0.0, 0.0, 2.0, 1.0)
-        source.transform = sourceTransform;
+        source = PHASESource(engine: phaseEngine, shapes: [shape])
+        // Translate the source to the origin
+        source.transform = referenceFrame;
+        source.gain = 12.0
         // Attach the Source to the Engine's Scene Graph.
         // This actives the Listener within the simulation.
         try! phaseEngine.rootObject.addChild(source)
         let pipeline = PHASESpatialPipeline(flags: [.directPathTransmission, .lateReverb])!
         let mixer = PHASESpatialMixerDefinition(spatialPipeline: pipeline)
-        pipeline.entries[PHASESpatialCategory.lateReverb]!.sendLevel = 0.5;
-        phaseEngine.defaultReverbPreset = .largeRoom
-        // Create a streaming node from AudioKit and hook it into the downstream Channel Mixer.
-        let pushNodeDefinition = PHASEPushStreamNodeDefinition(mixerDefinition: mixer, format: AVAudioFormat(standardFormatWithSampleRate: 44100, channelLayout: AVAudioChannelLayout(layoutTag: kAudioChannelLayoutTag_Stereo)!), identifier: "audioStream")
+        pipeline.entries[PHASESpatialCategory.lateReverb]!.sendLevel = 0.1;
+        phaseEngine.defaultReverbPreset = .mediumRoom
+        // Create a node to play the sound
+        try! phaseEngine.assetRegistry.registerSoundAsset(
+               url: Bundle.main.url(forResource: "Forest_Amb", withExtension: "wav")!, identifier: "forest",
+               assetType: .resident, channelLayout: nil,
+               normalizationMode: .dynamic
+        )
+        try! phaseEngine.assetRegistry.registerSoundAsset(
+               url: Bundle.main.url(forResource: "NHU05070109", withExtension: "wav")!, identifier: "pine",
+               assetType: .resident, channelLayout: nil,
+               normalizationMode: .dynamic
+        )
+        try! phaseEngine.assetRegistry.registerSoundAsset(
+               url: Bundle.main.url(forResource: "Bird", withExtension: "wav")!, identifier: "bird",
+               assetType: .resident, channelLayout: nil,
+               normalizationMode: .dynamic
+        )
+        try! phaseEngine.assetRegistry.registerSoundAsset(
+               url: Bundle.main.url(forResource: "Bird2", withExtension: "wav")!, identifier: "bird2",
+               assetType: .resident, channelLayout: nil,
+               normalizationMode: .dynamic
+        )
+        try! phaseEngine.assetRegistry.registerSoundAsset(
+               url: Bundle.main.url(forResource: "Frog", withExtension: "wav")!, identifier: "frog",
+               assetType: .resident, channelLayout: nil,
+               normalizationMode: .dynamic
+        )
+        try! phaseEngine.assetRegistry.registerSoundAsset(
+               url: Bundle.main.url(forResource: "Monkey", withExtension: "wav")!, identifier: "monkey",
+               assetType: .resident, channelLayout: nil,
+               normalizationMode: .dynamic
+        )
+        try! phaseEngine.assetRegistry.registerSoundAsset(
+               url: Bundle.main.url(forResource: "Rain", withExtension: "wav")!, identifier: "rain",
+               assetType: .resident, channelLayout: nil,
+               normalizationMode: .dynamic
+        )
+        try! phaseEngine.assetRegistry.registerSoundAsset(
+               url: Bundle.main.url(forResource: "Wind", withExtension: "wav")!, identifier: "wind",
+               assetType: .resident, channelLayout: nil,
+               normalizationMode: .dynamic
+        )
+        let samplerNodeDefinition = PHASESamplerNodeDefinition(
+            soundAssetIdentifier: "forest",
+            mixerDefinition: mixer // As yet undefined
+        )
         // Set the Push Node's Calibration Mode to Relative SPL and Level to 0 dB.
-        pushNodeDefinition.setCalibrationMode(calibrationMode: .relativeSpl, level: 0)
-        // Register a Sound Event Asset with the Engine named "audioStreamEvent".
-        try! phaseEngine.assetRegistry.registerSoundEventAsset(rootNode: pushNodeDefinition, identifier: "audioStreamEvent")
-        // Settings for audio player
-        player?.isLooping = true
-        player?.isBuffered = true
-        // Initialize tap with some settings
-        myTap = PhaseTap(akNode, bufferSize: 2048, callbackQueue: .main)
+        samplerNodeDefinition.playbackMode = .looping
+        samplerNodeDefinition.setCalibrationMode(
+            calibrationMode: .relativeSpl, level: 0.0
+        )
+
+        try! phaseEngine.assetRegistry.registerSoundEventAsset(
+            rootNode:samplerNodeDefinition,
+            identifier: "nature_event"
+        )
+
         // Associate the Source and Listener with the Spatial Mixer in the Sound Event.
         let mixerParameters = PHASEMixerParameters()
         mixerParameters.addSpatialMixerParameters(identifier: mixer.identifier, source: source, listener: listener)
-        // Create a Sound Event from the built Sound Event Asset "audioStreamEvent".
-        let streamSoundEvent = try! PHASESoundEvent(engine: phaseEngine, assetIdentifier: "audioStreamEvent", mixerParameters: mixerParameters)
-        // Start the engines and AudioKit's audio player.
-        // This will internally start the Audio IO Thread.
-        myTap.pushNode = streamSoundEvent.pushStreamNodes["audioStream"]
-        try! akEngine.start()
+
+        let soundEvent = try! PHASESoundEvent(
+            engine: phaseEngine,
+            assetIdentifier: "nature_event",
+            mixerParameters: mixerParameters // As yet undefined
+        )
+
+        // Start the engine and sound playback
         try! phaseEngine.start()
-        player!.play()
-        // Start the Sound Event and streaming.
-        streamSoundEvent.start()
-        myTap.start()
+        soundEvent.prepare()
+        soundEvent.start(completion: nil)
     }
 
-    // Update the listener's position and orientation relative to ARKit
+    // Update the listener's position and orientation relative to each source
+    // and attenuate gain using inverse square law
     func updateListenerTransform(updatedTransform: simd_float4x4) {
         listener.transform = updatedTransform
+        for source in sources {
+            let distance = sqrt(pow(source.transform.columns.3.x - updatedTransform.columns.3.x, 2) + pow(source.transform.columns.3.y - updatedTransform.columns.3.y, 2) + pow(source.transform.columns.3.z - updatedTransform.columns.3.z, 2))
+            source.gain = Double(1 / pow(distance, 2))
+        }
+    }
+    // Add a source to the audio scene with a specific transform
+    func addSource(withTransform: simd_float4x4, identifier: String) {
+        let mesh = MDLMesh.newIcosahedron(withRadius: 1.0, inwardNormals: false, allocator:nil)
+        // Create a Shape from the Icosahedron Mesh.
+        let shape = PHASEShape(engine: phaseEngine, mesh: mesh)
+        // Create a Volumetric Source from the Shape.
+        source = PHASESource(engine: phaseEngine, shapes: [shape])
+        // Translate the source to the origin
+        source.transform = withTransform;
+        // Attach the Source to the Engine's Scene Graph.
+        // This actives the Listener within the simulation.
+        try! phaseEngine.rootObject.addChild(source)
+        sources.append(source)
+        let pipeline = PHASESpatialPipeline(flags: [.directPathTransmission, .lateReverb])!
+        let mixer = PHASESpatialMixerDefinition(spatialPipeline: pipeline)
+        pipeline.entries[PHASESpatialCategory.lateReverb]!.sendLevel = 0.1;
+        phaseEngine.defaultReverbPreset = .mediumRoom
+        // Associate the Source and Listener with the Spatial Mixer in the Sound Event.
+        let mixerParameters = PHASEMixerParameters()
+        mixerParameters.addSpatialMixerParameters(identifier: mixer.identifier, source: source, listener: listener)
+        let samplerNodeDefinition = PHASESamplerNodeDefinition(
+            soundAssetIdentifier: identifier,
+            mixerDefinition: mixer // As yet undefined
+        )
+        // Set the Push Node's Calibration Mode to Relative SPL and Level to 0 dB.
+        samplerNodeDefinition.playbackMode = .oneShot
+        samplerNodeDefinition.setCalibrationMode(
+            calibrationMode: .relativeSpl, level: 0.0
+        )
+
+        try! phaseEngine.assetRegistry.registerSoundEventAsset(
+            rootNode:samplerNodeDefinition,
+            identifier: "nature_event\(sources.count)"
+        )
+        let soundEvent = try! PHASESoundEvent(
+            engine: phaseEngine,
+            assetIdentifier: "nature_event\(sources.count)",
+            mixerParameters: mixerParameters // As yet undefined
+        )
+        soundEvent.prepare()
+        soundEvent.start()
     }
 }

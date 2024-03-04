@@ -3,16 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		075A93772B8FEBE800C906CC /* AudioSpatializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A93762B8FEBE800C906CC /* AudioSpatializer.swift */; };
 		075A93792B8FECCE00C906CC /* Float4x4+RotationMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075A93782B8FECCE00C906CC /* Float4x4+RotationMatrix.swift */; };
-		075A937C2B8FEE2100C906CC /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 075A937B2B8FEE2100C906CC /* AudioKit */; };
-		075A937F2B8FEE9A00C906CC /* AudioKitEX in Frameworks */ = {isa = PBXBuildFile; productRef = 075A937E2B8FEE9A00C906CC /* AudioKitEX */; };
 		075A93832B8FF0F200C906CC /* NHU05070109.wav in Resources */ = {isa = PBXBuildFile; fileRef = 075A93822B8FF0F100C906CC /* NHU05070109.wav */; };
-		075A93862B8FF1BD00C906CC /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 075A93852B8FF1BD00C906CC /* SoundpipeAudioKit */; };
+		07B37B5B2B950C7B00512D59 /* Forest_Amb.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07B37B5A2B950C7B00512D59 /* Forest_Amb.wav */; };
+		07B37B5D2B95100900512D59 /* Bird.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07B37B5C2B95100900512D59 /* Bird.wav */; };
+		07B37B5F2B95100F00512D59 /* Bird2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07B37B5E2B95100F00512D59 /* Bird2.wav */; };
+		07B37B612B95101600512D59 /* Frog.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07B37B602B95101500512D59 /* Frog.wav */; };
+		07B37B632B95102200512D59 /* Monkey.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07B37B622B95102200512D59 /* Monkey.wav */; };
+		07B37B652B95102900512D59 /* Rain.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07B37B642B95102900512D59 /* Rain.wav */; };
+		07B37B672B95103200512D59 /* Wind.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07B37B662B95103200512D59 /* Wind.wav */; };
 		111DC86920ACAB690037F7B1 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111DC86820ACAB690037F7B1 /* RoundedButton.swift */; };
 		112FE5671F4F95A200BF85EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 112FE5661F4F95A200BF85EA /* Assets.xcassets */; };
 		11C983EC20953B7900394C67 /* MultipeerSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C983EB20953B7900394C67 /* MultipeerSession.swift */; };
@@ -28,6 +32,13 @@
 		075A93762B8FEBE800C906CC /* AudioSpatializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSpatializer.swift; sourceTree = "<group>"; };
 		075A93782B8FECCE00C906CC /* Float4x4+RotationMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float4x4+RotationMatrix.swift"; sourceTree = "<group>"; };
 		075A93822B8FF0F100C906CC /* NHU05070109.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = NHU05070109.wav; sourceTree = "<group>"; };
+		07B37B5A2B950C7B00512D59 /* Forest_Amb.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Forest_Amb.wav; sourceTree = "<group>"; };
+		07B37B5C2B95100900512D59 /* Bird.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bird.wav; sourceTree = "<group>"; };
+		07B37B5E2B95100F00512D59 /* Bird2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bird2.wav; sourceTree = "<group>"; };
+		07B37B602B95101500512D59 /* Frog.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Frog.wav; sourceTree = "<group>"; };
+		07B37B622B95102200512D59 /* Monkey.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Monkey.wav; sourceTree = "<group>"; };
+		07B37B642B95102900512D59 /* Rain.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Rain.wav; sourceTree = "<group>"; };
+		07B37B662B95103200512D59 /* Wind.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Wind.wav; sourceTree = "<group>"; };
 		111DC86820ACAB690037F7B1 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		112FE5661F4F95A200BF85EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11C983EB20953B7900394C67 /* MultipeerSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerSession.swift; sourceTree = "<group>"; };
@@ -49,9 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				075A937C2B8FEE2100C906CC /* AudioKit in Frameworks */,
-				075A937F2B8FEE9A00C906CC /* AudioKitEX in Frameworks */,
-				075A93862B8FF1BD00C906CC /* SoundpipeAudioKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +96,14 @@
 		842316DE1F2030C300D189D1 /* ARMultiuser */ = {
 			isa = PBXGroup;
 			children = (
+				07B37B5A2B950C7B00512D59 /* Forest_Amb.wav */,
 				075A93822B8FF0F100C906CC /* NHU05070109.wav */,
+				07B37B5C2B95100900512D59 /* Bird.wav */,
+				07B37B5E2B95100F00512D59 /* Bird2.wav */,
+				07B37B602B95101500512D59 /* Frog.wav */,
+				07B37B622B95102200512D59 /* Monkey.wav */,
+				07B37B642B95102900512D59 /* Rain.wav */,
+				07B37B662B95103200512D59 /* Wind.wav */,
 				075A93782B8FECCE00C906CC /* Float4x4+RotationMatrix.swift */,
 				842316DF1F2030C300D189D1 /* AppDelegate.swift */,
 				842316E31F2030C300D189D1 /* ViewController.swift */,
@@ -130,9 +145,6 @@
 			);
 			name = ARMultiuser;
 			packageProductDependencies = (
-				075A937B2B8FEE2100C906CC /* AudioKit */,
-				075A937E2B8FEE9A00C906CC /* AudioKitEX */,
-				075A93852B8FF1BD00C906CC /* SoundpipeAudioKit */,
 			);
 			productName = ARMultiuser;
 			productReference = 842316DC1F2030C300D189D1 /* ARMultiuser.app */;
@@ -164,9 +176,6 @@
 			);
 			mainGroup = 842316D31F2030C300D189D1;
 			packageReferences = (
-				075A937A2B8FEE2100C906CC /* XCRemoteSwiftPackageReference "AudioKit" */,
-				075A937D2B8FEE9A00C906CC /* XCRemoteSwiftPackageReference "AudioKitEX" */,
-				075A93842B8FF1BD00C906CC /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */,
 			);
 			productRefGroup = 842316DD1F2030C300D189D1 /* Products */;
 			projectDirPath = "";
@@ -182,11 +191,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07B37B5F2B95100F00512D59 /* Bird2.wav in Resources */,
 				075A93832B8FF0F200C906CC /* NHU05070109.wav in Resources */,
 				84ABEA0A1F3D15E70052D547 /* Assets.scnassets in Resources */,
+				07B37B5B2B950C7B00512D59 /* Forest_Amb.wav in Resources */,
+				07B37B612B95101600512D59 /* Frog.wav in Resources */,
+				07B37B632B95102200512D59 /* Monkey.wav in Resources */,
 				842316EC1F2030C300D189D1 /* LaunchScreen.storyboard in Resources */,
+				07B37B5D2B95100900512D59 /* Bird.wav in Resources */,
 				112FE5671F4F95A200BF85EA /* Assets.xcassets in Resources */,
 				842316E71F2030C300D189D1 /* Main.storyboard in Resources */,
+				07B37B672B95103200512D59 /* Wind.wav in Resources */,
+				07B37B652B95102900512D59 /* Rain.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,8 +353,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -348,13 +363,10 @@
 			baseConfigurationReference = FBAF5356FF2B690CFEBC4145 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6CV59M265C;
 				INFOPLIST_FILE = ARMultiuser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.ARMultiuser${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -368,13 +380,10 @@
 			baseConfigurationReference = FBAF5356FF2B690CFEBC4145 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6CV59M265C;
 				INFOPLIST_FILE = ARMultiuser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.ARMultiuser${SAMPLE_CODE_DISAMBIGUATOR}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -405,51 +414,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		075A937A2B8FEE2100C906CC /* XCRemoteSwiftPackageReference "AudioKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AudioKit/AudioKit";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		075A937D2B8FEE9A00C906CC /* XCRemoteSwiftPackageReference "AudioKitEX" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AudioKit/AudioKitEX";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		075A93842B8FF1BD00C906CC /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AudioKit/SoundpipeAudioKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.6.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		075A937B2B8FEE2100C906CC /* AudioKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 075A937A2B8FEE2100C906CC /* XCRemoteSwiftPackageReference "AudioKit" */;
-			productName = AudioKit;
-		};
-		075A937E2B8FEE9A00C906CC /* AudioKitEX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 075A937D2B8FEE9A00C906CC /* XCRemoteSwiftPackageReference "AudioKitEX" */;
-			productName = AudioKitEX;
-		};
-		075A93852B8FF1BD00C906CC /* SoundpipeAudioKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 075A93842B8FF1BD00C906CC /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */;
-			productName = SoundpipeAudioKit;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 842316D41F2030C300D189D1 /* Project object */;
 }
