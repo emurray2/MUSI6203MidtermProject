@@ -1,3 +1,6 @@
+# A modified version of Apple's demo below by Hyunkyung Shin, Xinni Li, and Evan Murray
+[Demo Video](https://youtu.be/pGcpgUMzfiI)
+
 # Creating a Multiuser AR Experience
 
 Enable nearby devices to share an AR experience by using a host-guest multiuser strategy. 
